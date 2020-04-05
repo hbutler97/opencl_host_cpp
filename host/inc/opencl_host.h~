@@ -1,0 +1,38 @@
+#ifndef INC_OPENCL_HOST_H
+#define INC_OPENCL_HOST_H
+
+#define __CL_ENABLE_EXCEPTIONS
+
+#include <iostream>
+#include "CL/opencl.h"
+#include "CL/cl.hpp"
+
+bool is_altera_platform(cl::Platform platform);
+
+class OPENCL_HOST
+//  public virtual PGMHSELMO_ENGINE_INTERFACE
+{
+public:
+	OPENCL_HOST();
+	~OPENCL_HOST();
+	
+private:
+	OPENCL_HOST(const OPENCL_HOST& opencl_host_copy);
+	cl_context m_context;
+	cl_platform_id  m_platform;
+	std::vector<cl::Platform> m_platform_vector;
+	std::vector<cl::Platform>::iterator m_altera_platform;
+	std::vector<cl::Device> m_devices;
+	
+	
+	
+	void init_opencl(void);
+	
+};
+
+
+
+
+
+	
+#endif //INC_OPENCL_HOST
